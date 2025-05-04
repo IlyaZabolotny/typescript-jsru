@@ -1,0 +1,17 @@
+{
+  "name": "typescript-javascriptru",
+  "version": "1.0.0",
+  "description": "intensive typescript javascript.ru",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "ts",
+    "compilation"
+  ],
+  "license": "ISC",
+  "author": "Ilya",
+  "type": "commonjs",
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  }
+}

@@ -1,3 +1,4 @@
+// Type Aliases
 type MyString = string;
 type Size = "s" | "m" | "l";
 

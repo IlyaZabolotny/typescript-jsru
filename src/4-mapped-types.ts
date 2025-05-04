@@ -1,3 +1,4 @@
+// Mapped Types
 type BookMapped = {
   title: string;
   author: string;

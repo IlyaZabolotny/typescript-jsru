@@ -1,3 +1,4 @@
+// Interfaces
 interface IBook {
   title: string;
   pages: number;
