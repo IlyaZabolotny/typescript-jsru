@@ -22,31 +22,39 @@ type BookGetters = {
 
 type CompleteBook = BookCopy & BookGetters & BookSetters;
 
-class BookClass implements CompleteBook {
-  title?: string = '';
-  author?: string = '';
-  getTitle(): string {
-    return this.title!;
-  };
-  getAuthor: () => string;
-  getPages: () => number;
-  setTitle: (value: string) => void;
-  setAuthor: (value: string) => void;
-  setPages: (value: number) => void;
-}
+// class BookClass implements CompleteBook {
+//   title?: string = '';
+//   author?: string = '';
+//   getTitle(): string {
+//     return this.title!;
+//   };
+//   getAuthor: () => string;
+//   getPages: () => number;
+//   setTitle: (value: string) => void;
+//   setAuthor: (value: string) => void;
+//   setPages: (value: number) => void;
+// }
 
-type Stages = 'idle' | 'prepared' | 'paused' | 'end';
+type Stages = "idle" | "prepared" | "paused" | "end";
 
 type StageSwitchers = {
   [Stage in Stages as `switchTo${Capitalize<Stage>}`]: () => Stages;
 };
 
-function createStageMachine(): {currentStage: Stages} & StageSwitchers {
+function createStageMachine(): { currentStage: Stages } & StageSwitchers {
   return {
-    currentStage: 'idle',
-    switchToIdle: () => {return 'idle'},
-    switchToEnd: () => {return 'end'},
-    switchToPrepared: () => {return 'prepared'},
-    switchToPaused: () => {return 'paused'},
-  }
+    currentStage: "idle",
+    switchToIdle: () => {
+      return "idle";
+    },
+    switchToEnd: () => {
+      return "end";
+    },
+    switchToPrepared: () => {
+      return "prepared";
+    },
+    switchToPaused: () => {
+      return "paused";
+    },
+  };
 }

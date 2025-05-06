@@ -1,11 +1,10 @@
 // Decorators
 import "reflect-metadata";
 
-class Calculator {
-  // @decorator
+class ModalWindow {
   @MeasureTime()
-  sum(a: number, b: number): number {
-    return a + b;
+  meaasureTime(period: number): number {
+    return period;
   }
 }
 

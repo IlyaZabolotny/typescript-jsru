@@ -1,16 +1,16 @@
 // Any
-let anyVar: any = "ts";
-anyVar = null;
-anyVar = function () {};
-anyVar.a;
-anyVar.get();
+let anyValue: any = "ts";
+anyValue = null;
+anyValue = function () {};
+anyValue.a;
+anyValue.get();
 
-// Unknown - best practice
-let unknownVar: unknown = { a: "" };
-unknownVar = 123;
-unknownVar = { b: 1 };
+// Unknown - better to use for response data, used in catch block
+let unknownValue: unknown = { a: "value1" };
+unknownValue = 123;
+unknownValue = { b: 1 };
 
-// Never - an empty set
+// Never - unachievable code
 
 // Literal types
 let fontWeight: "bold" = "bold";
@@ -21,7 +21,7 @@ let fontWeight2: 500 | 600 | 700 | "bold" = 500;
 
 let numberOrString: number | string = 123;
 
-function getProperty(
+function getPropertyUnionFn(
   obj: { a: String; d: string } | { b: Boolean; d: string }
 ) {
   obj.d;

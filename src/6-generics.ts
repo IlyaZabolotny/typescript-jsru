@@ -1,19 +1,25 @@
 // Generics
 // type parameters
 type ResponseStatus = "success" | "error" | "pending";
-type TickerResponse = {
+
+type ComponentResponse = {
   status: ResponseStatus;
-  result: Ticker;
-};
-type Ticker = {
-  market: string;
-  price: number;
-};
-function getTicker(): GenericTickerResponse<Ticker> {
-  throw new Error("some error");
+  result: Component;
 };
 
-type GenericTickerResponse<Result> = {
+type Component = {
+  name: string;
+  elements: string[];
+};
+
+function getComponent(): GenericComponentResponse<Component> {
+  return {
+    status: "success",
+    result: { name: "Component1", elements: ["Page1", "Sidebar"] },
+  };
+}
+
+type GenericComponentResponse<Result> = {
   status: ResponseStatus;
   result: Result;
 };
@@ -23,26 +29,28 @@ type GenericResponse<Result = unknown, Status = ResponseStatus> = {
   result: Result;
 };
 
-function getTickers():GenericResponse<Ticker[]> {
-    throw new Error('some error');
+function getComponents(): GenericResponse<Component[]> {
+  return {
+    status: "success",
+    result: [{ name: "Component2", elements: ["Page2", "Navigation"] }],
+  };
 }
 
-type GetPropertyValue<Record extends object, Property extends keyof Record> = Record[Property];
+type GetPropertyValue<
+  Record extends object,
+  Property extends keyof Record
+> = Record[Property];
 
-type Test = GetPropertyValue<Ticker, 'market'>;
+type Test = GetPropertyValue<Component, "elements">;
 
-function getProperty<Record extends object, Property extends keyof Record>(
-    entity: Record,
-    property: Property
-):Record[Property] {
-    return entity[property];
+function getObjectProperty<
+  Record extends object,
+  Property extends keyof Record
+>(entity: Record, property: Property): Record[Property] {
+  return entity[property];
 }
 
-function getProperty<Entity extends object, Property extends keyof Entity>(
-    entity: Entity,
-    property: Property
-): Entity[Property] {
-    return entity[property];
-}
-
-const test = getProperty<Ticker, 'market'>({market: 'MOEX', price: 190}, "market");
+const test = getProperty<Component, "name">(
+  { name: "Search", elements: [] },
+  "name"
+);

@@ -5,7 +5,8 @@
     "allowJs": true,
     "strict": true,
     "esModuleInterop": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "experimentalDecorators": true
   },
   "include": ["./src"],
   "exclude": []

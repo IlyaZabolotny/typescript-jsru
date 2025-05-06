@@ -14,10 +14,10 @@ type NameOrId<Value extends string | number> = Value extends number
 function createLable<Value extends string | number>(
   value: Value
 ): NameOrId<Value> {
-  throw new Error();
+  return { id: 1 } as NameOrId<Value>;
 }
 
 const idLable = createLable<number>(123);
-const nameLable = createLable<string>("Ilya");
+const nameLable = createLable<string>("label1");
 const idLable1 = createLable(123);
-const nameLable1 = createLable("Ilya");
+const nameLable1 = createLable("label2");

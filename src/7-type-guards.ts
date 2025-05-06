@@ -6,20 +6,23 @@ function toUperCase(a: number | string | boolean): string {
 
   return a.toString();
 }
+``;
 
-type TickerTemplate = {
-  market: string;
-  price: number;
+type ComponentTemplate = {
+  name: string;
+  elements: string[];
 };
 
-function showTickerPrice(ticker?: TickerTemplate | null): number | undefined {
-  if (ticker) {
-    return ticker.price;
+function showComponentTemplate(
+  component?: ComponentTemplate | null
+): string[] | undefined {
+  if (component) {
+    return component.elements;
   }
 
   // return ticker?.price;
   // return ticker ? ticker.price: undefined;
-  if (!ticker) {
+  if (!component) {
     return;
   }
 }
@@ -39,13 +42,13 @@ type Responce = {
   result: unknown;
 };
 
-function isTicker(entity: unknown): entity is Ticker {
-  const ticker: Ticker = entity as Ticker;
+function isTicker(entity: unknown): entity is Component {
+  const component: Component = entity as Component;
 
   return (
-    !!ticker &&
-    typeof ticker.market === "string" &&
-    typeof ticker.price === "number"
+    !!component &&
+    typeof component.name === "string" &&
+    Array.isArray(component.elements)
   );
 }
 
